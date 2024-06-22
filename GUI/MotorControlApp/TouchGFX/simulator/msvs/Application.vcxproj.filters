@@ -142,29 +142,17 @@
     <Filter Include="Source Files\gui\model">
       <UniqueIdentifier>3D67A2C4-3978-E478-4AF3-E11258F76D75</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen1_screen">
-      <UniqueIdentifier>DBD92E54-CBF5-0CC3-9A77-52A8514A47E0</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated">
       <UniqueIdentifier>F1B9E7AD-D209-114B-E7C8-19DB27B4E7EF</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\common">
       <UniqueIdentifier>F67B8145-7506-FA20-05D3-B7F3B9F199B3</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\screen1_screen">
-      <UniqueIdentifier>F86CE768-D25A-846D-D919-6706BE469F51</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\generated\gui_generated">
       <UniqueIdentifier>0EF8322A-79FA-4730-BC0D-CDC661A127D7</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\common">
       <UniqueIdentifier>5C7B2177-1367-27CD-0EF2-3C3A2393B92F</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>C2C5A0F0-1C85-6C31-2780-E86EB7A44133</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>D4FA33D6-B1DD-4AAF-3D56-9B56AB3B789D</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\simulator\include">
       <UniqueIdentifier>F00AA432-5395-61B4-EA18-B175436BB2EA</UniqueIdentifier>
@@ -183,6 +171,42 @@
     </Filter>
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>81DFDF7F-03B2-B7C9-2E30-9432A6D28FA5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\motorcontrolscreen_screen">
+      <UniqueIdentifier>AD184E58-69CE-28EA-B03C-8883F55E2E90</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\motorcontrolscreen_screen">
+      <UniqueIdentifier>B4A72CED-A7B4-CA2D-6574-A95C647FCC91</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\tempraturescreen_screen">
+      <UniqueIdentifier>4202F081-8E3D-5B75-47B2-E770AF3CFD6E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\tempraturescreen_screen">
+      <UniqueIdentifier>E53E4145-E33E-D747-C8D1-D96FDB4545D3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\homescreen_screen">
+      <UniqueIdentifier>BDDD6A7D-F54B-956E-3504-BBF917EBF50A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\homescreen_screen">
+      <UniqueIdentifier>02350544-25D3-28DB-89C0-3175AFE5CD13</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\homescreen_screen">
+      <UniqueIdentifier>58D40DC0-9A78-CDA4-B813-4622B35F4F53</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\motorcontrolscreen_screen">
+      <UniqueIdentifier>4E8C84D6-6999-D938-1ADA-2288A2156F6D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\motorcontrolscreen_screen">
+      <UniqueIdentifier>D388EAE2-45F0-7A0D-6751-17E9B424A304</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\tempraturescreen_screen">
+      <UniqueIdentifier>A1FD702A-2439-FB50-57EE-8E80E97BDD3B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\tempraturescreen_screen">
+      <UniqueIdentifier>BB430220-F5BA-C046-2148-31BC0BB9A26C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\homescreen_screen">
+      <UniqueIdentifier>2BE7E194-E90E-6D0A-8E6C-1884906BA7FF</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -213,17 +237,35 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\homescreen_screen\HomeScreenPresenter.cpp">
+      <Filter>Source Files\gui\homescreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\homescreen_screen\HomeScreenView.cpp">
+      <Filter>Source Files\gui\homescreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\homescreen_screen\HomeScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\homescreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\motorcontrolscreen_screen\MotorControlScreenPresenter.cpp">
+      <Filter>Source Files\gui\motorcontrolscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\motorcontrolscreen_screen\MotorControlScreenView.cpp">
+      <Filter>Source Files\gui\motorcontrolscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\motorcontrolscreen_screen\MotorControlScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\motorcontrolscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\tempraturescreen_screen\TempratureScreenPresenter.cpp">
+      <Filter>Source Files\gui\tempraturescreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\tempraturescreen_screen\TempratureScreenView.cpp">
+      <Filter>Source Files\gui\tempraturescreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\tempraturescreen_screen\TempratureScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\tempraturescreen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -661,20 +703,38 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp">
-      <Filter>Header Files\gui\screen1_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp">
-      <Filter>Header Files\gui\screen1_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\homescreen_screen\HomeScreenPresenter.hpp">
+      <Filter>Header Files\gui\homescreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\homescreen_screen\HomeScreenView.hpp">
+      <Filter>Header Files\gui\homescreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\homescreen_screen\HomeScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\homescreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\motorcontrolscreen_screen\MotorControlScreenPresenter.hpp">
+      <Filter>Header Files\gui\motorcontrolscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\motorcontrolscreen_screen\MotorControlScreenView.hpp">
+      <Filter>Header Files\gui\motorcontrolscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\motorcontrolscreen_screen\MotorControlScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\motorcontrolscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\tempraturescreen_screen\TempratureScreenPresenter.hpp">
+      <Filter>Header Files\gui\tempraturescreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\tempraturescreen_screen\TempratureScreenView.hpp">
+      <Filter>Header Files\gui\tempraturescreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\tempraturescreen_screen\TempratureScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\tempraturescreen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

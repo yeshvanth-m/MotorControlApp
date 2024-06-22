@@ -17,19 +17,35 @@ public:
 
     virtual void changeToStartScreen()
     {
-        gotoScreen1ScreenNoTransition();
+        gotoHomeScreenScreenNoTransition();
     }
 
-    // Screen1
-    void gotoScreen1ScreenNoTransition();
+    // HomeScreen
+    void gotoHomeScreenScreenNoTransition();
+
+    // MotorControlScreen
+    void gotoMotorControlScreenScreenSlideTransitionNorth();
+
+    void gotoMotorControlScreenScreenSlideTransitionSouth();
+
+    // TempratureScreen
+    void gotoTempratureScreenScreenSlideTransitionNorth();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
 
-    // Screen1
-    void gotoScreen1ScreenNoTransitionImpl();
+    // HomeScreen
+    void gotoHomeScreenScreenNoTransitionImpl();
+
+    // MotorControlScreen
+    void gotoMotorControlScreenScreenSlideTransitionNorthImpl();
+
+    void gotoMotorControlScreenScreenSlideTransitionSouthImpl();
+
+    // TempratureScreen
+    void gotoTempratureScreenScreenSlideTransitionNorthImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

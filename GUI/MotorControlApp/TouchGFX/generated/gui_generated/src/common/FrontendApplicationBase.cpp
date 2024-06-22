@@ -9,8 +9,12 @@
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
 #include <platform/driver/lcd/LCD16bpp.hpp>
-#include <gui/screen1_screen/Screen1View.hpp>
-#include <gui/screen1_screen/Screen1Presenter.hpp>
+#include <gui/homescreen_screen/HomeScreenView.hpp>
+#include <gui/homescreen_screen/HomeScreenPresenter.hpp>
+#include <gui/motorcontrolscreen_screen/MotorControlScreenView.hpp>
+#include <gui/motorcontrolscreen_screen/MotorControlScreenPresenter.hpp>
+#include <gui/tempraturescreen_screen/TempratureScreenView.hpp>
+#include <gui/tempraturescreen_screen/TempratureScreenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -30,15 +34,52 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// Screen1
+// HomeScreen
 
-void FrontendApplicationBase::gotoScreen1ScreenNoTransition()
+void FrontendApplicationBase::gotoHomeScreenScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoScreen1ScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoHomeScreenScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen1ScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoHomeScreenScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<Screen1View, Screen1Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<HomeScreenView, HomeScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// MotorControlScreen
+
+void FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionNorth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionNorthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionNorthImpl()
+{
+    touchgfx::makeTransition<MotorControlScreenView, MotorControlScreenPresenter, touchgfx::SlideTransition<NORTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+void FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionSouth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionSouthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoMotorControlScreenScreenSlideTransitionSouthImpl()
+{
+    touchgfx::makeTransition<MotorControlScreenView, MotorControlScreenPresenter, touchgfx::SlideTransition<SOUTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// TempratureScreen
+
+void FrontendApplicationBase::gotoTempratureScreenScreenSlideTransitionNorth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoTempratureScreenScreenSlideTransitionNorthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoTempratureScreenScreenSlideTransitionNorthImpl()
+{
+    touchgfx::makeTransition<TempratureScreenView, TempratureScreenPresenter, touchgfx::SlideTransition<NORTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

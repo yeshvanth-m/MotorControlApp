@@ -6,6 +6,75 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_KEZ1" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">MOSFET Driver Temperature&#10;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CXW6" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">     MCU&#10;Temperature&#10;</Translation>
+      </Text>
+      <Text Id="__SingleUse_YYCD" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB"> Motor&#10;Control</Translation>
+      </Text>
+      <Text Id="__SingleUse_7WW3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">TMC</Translation>
+      </Text>
+      <Text Id="__SingleUse_M6ER" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">T3C</Translation>
+      </Text>
+      <Text Id="__SingleUse_3F2C" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">T2C</Translation>
+      </Text>
+      <Text Id="__SingleUse_04K0" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">T1C</Translation>
+      </Text>
+      <Text Id="__SingleUse_MBKR" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">F3</Translation>
+      </Text>
+      <Text Id="__SingleUse_U6US" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">F2</Translation>
+      </Text>
+      <Text Id="__SingleUse_UWI7" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">F1</Translation>
+      </Text>
+      <Text Id="__SingleUse_M4PF" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M1</Translation>
+      </Text>
+      <Text Id="__SingleUse_3ENM" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M1</Translation>
+      </Text>
+      <Text Id="__SingleUse_X7M9" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M2</Translation>
+      </Text>
+      <Text Id="__SingleUse_9M5B" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">500</Translation>
+      </Text>
+      <Text Id="__SingleUse_67GA" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">1500</Translation>
+      </Text>
+      <Text Id="__SingleUse_BRZV" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">1000</Translation>
+      </Text>
+      <Text Id="__SingleUse_ASNW" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">2000</Translation>
+      </Text>
+      <Text Id="__SingleUse_RIHF" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">2500</Translation>
+      </Text>
+      <Text Id="__SingleUse_M3KW" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_85BW" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">RPM</Translation>
+      </Text>
+      <Text Id="__SingleUse_755F" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M3</Translation>
+      </Text>
+      <Text Id="__SingleUse_SBLD" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M3</Translation>
+      </Text>
+      <Text Id="__SingleUse_A5QO" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">M2</Translation>
+      </Text>
       <Text Id="__SingleUse_ZJBP" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Start</Translation>
       </Text>
@@ -15,5 +84,6 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_00" Font="verdana.ttf" Size="15" Bpp="4" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

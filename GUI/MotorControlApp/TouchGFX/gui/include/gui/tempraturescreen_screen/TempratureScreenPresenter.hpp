@@ -1,17 +1,17 @@
-#ifndef SCREEN1PRESENTER_HPP
-#define SCREEN1PRESENTER_HPP
+#ifndef TEMPRATURESCREENPRESENTER_HPP
+#define TEMPRATURESCREENPRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class Screen1View;
+class TempratureScreenView;
 
-class Screen1Presenter : public touchgfx::Presenter, public ModelListener
+class TempratureScreenPresenter : public touchgfx::Presenter, public ModelListener
 {
 public:
-    Screen1Presenter(Screen1View& v);
+    TempratureScreenPresenter(TempratureScreenView& v);
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -25,12 +25,12 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~Screen1Presenter() {}
+    virtual ~TempratureScreenPresenter() {}
 
 private:
-    Screen1Presenter();
+    TempratureScreenPresenter();
 
-    Screen1View& view;
+    TempratureScreenView& view;
 };
 
-#endif // SCREEN1PRESENTER_HPP
+#endif // TEMPRATURESCREENPRESENTER_HPP

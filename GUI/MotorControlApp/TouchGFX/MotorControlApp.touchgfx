@@ -43,28 +43,753 @@
             },
             "Action": {
               "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "HomeScreen"
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "North",
+              "ActionComponent": "MotorControlScreen"
             }
           }
         ]
       },
       {
-        "Name": "Screen1",
+        "Name": "MotorControlScreen",
+        "CanvasBufferSize": 7200,
         "Components": [
           {
             "Type": "Box",
-            "Name": "box1",
+            "Name": "BG",
             "Width": 480,
             "Height": 272,
             "Color": {
-              "Red": 107,
-              "Green": 191,
-              "Blue": 255
+              "Red": 247,
+              "Green": 255,
+              "Blue": 254
             }
+          },
+          {
+            "Type": "Gauge",
+            "Name": "M2_RPM_Guage",
+            "X": 153,
+            "Y": 143,
+            "Width": 120,
+            "Height": 120,
+            "FileNameBackground": "custom_guage.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -119.0,
+            "EndAngle": 122.0,
+            "RangeMax": 2500.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M2_G",
+            "X": 202,
+            "Y": 229,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_A5QO",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Slider",
+            "Name": "M3_RPM_Slider",
+            "X": 387,
+            "Y": 11,
+            "Width": 24,
+            "Height": 224,
+            "BackgroundUnselected": "__generated\\clay_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "BackgroundSelected": "__generated\\alternate_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "Indicator": "__generated\\alternate_theme_images_widgets_slider_vertical_thin_rounded_light.png",
+            "BackgroundX": 9,
+            "BackgroundY": 12,
+            "IndicatorMax": 200,
+            "ValueMax": 2500
+          },
+          {
+            "Type": "Slider",
+            "Name": "M1_RPM_Slider",
+            "X": 298,
+            "Y": 11,
+            "Width": 24,
+            "Height": 224,
+            "BackgroundUnselected": "__generated\\clay_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "BackgroundSelected": "__generated\\alternate_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "Indicator": "__generated\\clay_theme_images_widgets_slider_vertical_thin_rounded_active.png",
+            "BackgroundX": 9,
+            "BackgroundY": 12,
+            "IndicatorMax": 200,
+            "ValueMax": 2500
+          },
+          {
+            "Type": "Gauge",
+            "Name": "M3_RPM_Guage",
+            "X": 153,
+            "Y": 11,
+            "Width": 120,
+            "Height": 120,
+            "FileNameBackground": "custom_guage.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -119.0,
+            "EndAngle": 122.0,
+            "RangeMax": 2500.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Slider",
+            "Name": "M2_RPM_Slider",
+            "X": 342,
+            "Y": 11,
+            "Width": 24,
+            "Height": 224,
+            "BackgroundUnselected": "__generated\\clay_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "BackgroundSelected": "__generated\\alternate_theme_images_widgets_slider_vertical_thin_track_small.png",
+            "Indicator": "__generated\\clay_theme_images_widgets_slider_vertical_thin_rounded_light.png",
+            "BackgroundX": 9,
+            "BackgroundY": 12,
+            "IndicatorMax": 200,
+            "ValueMax": 2500
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M3_G",
+            "X": 202,
+            "Y": 98,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_SBLD",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Gauge",
+            "Name": "M1_RPM_Guage",
+            "X": 15,
+            "Y": 143,
+            "Width": 120,
+            "Height": 120,
+            "FileNameBackground": "custom_guage.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -119.0,
+            "EndAngle": 122.0,
+            "RangeMax": 2500.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Button",
+            "Name": "ClearFault_M3",
+            "X": 104,
+            "Y": 95,
+            "Width": 36,
+            "Height": 36,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_icon_round_micro_fill_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_icon_round_micro_fill_action.png",
+            "Preset": "alternate_theme\\presets\\button\\icon\\round\\micro_fill_action.json"
+          },
+          {
+            "Type": "Button",
+            "Name": "ClearFault_M1",
+            "X": 11,
+            "Y": 94,
+            "Width": 36,
+            "Height": 36,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_icon_round_micro_fill_pressed.png",
+            "Released": "fault1.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "ClearFault_M2",
+            "X": 57,
+            "Y": 95,
+            "Width": 36,
+            "Height": 36,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_icon_round_micro_fill_pressed.png",
+            "Released": "fault_2.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "E14",
+            "X": 3,
+            "Y": 3,
+            "Width": 58,
+            "Height": 41,
+            "RelativeFilename": "Background.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M3_S",
+            "X": 388,
+            "Y": 242,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_755F",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM",
+            "X": 434,
+            "Y": 242,
+            "Width": 32,
+            "Height": 18,
+            "TextId": "__SingleUse_85BW",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM_0",
+            "X": 456,
+            "Y": 212,
+            "Width": 10,
+            "Height": 18,
+            "TextId": "__SingleUse_M3KW",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MAX_RPM",
+            "X": 426,
+            "Y": 16,
+            "Width": 40,
+            "Height": 18,
+            "TextId": "__SingleUse_RIHF",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM_2000",
+            "X": 426,
+            "Y": 56,
+            "Width": 40,
+            "Height": 18,
+            "TextId": "__SingleUse_ASNW",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM_1000",
+            "X": 426,
+            "Y": 136,
+            "Width": 40,
+            "Height": 18,
+            "TextId": "__SingleUse_BRZV",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM_1500",
+            "X": 426,
+            "Y": 95,
+            "Width": 40,
+            "Height": 18,
+            "TextId": "__SingleUse_67GA",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "RPM_500",
+            "X": 436,
+            "Y": 175,
+            "Width": 30,
+            "Height": 18,
+            "TextId": "__SingleUse_9M5B",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M2_S",
+            "X": 343,
+            "Y": 242,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_X7M9",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M1_S",
+            "X": 298,
+            "Y": 242,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_3ENM",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "M1_G",
+            "X": 61,
+            "Y": 229,
+            "Width": 23,
+            "Height": 18,
+            "TextId": "__SingleUse_M4PF",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "F1",
+            "X": 20,
+            "Y": 104,
+            "Width": 19,
+            "Height": 18,
+            "TextId": "__SingleUse_UWI7",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "F2",
+            "X": 66,
+            "Y": 105,
+            "Width": 19,
+            "Height": 18,
+            "TextId": "__SingleUse_U6US",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "F3",
+            "X": 113,
+            "Y": 104,
+            "Width": 19,
+            "Height": 18,
+            "TextId": "__SingleUse_MBKR",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Button",
+            "Name": "TempScreen",
+            "X": -40,
+            "Y": -2,
+            "Width": 110,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_inactive.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_inactive.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_inactive.json"
+          },
+          {
+            "Type": "Circle",
+            "Name": "Fault1_Indicator",
+            "X": -10,
+            "Y": 32,
+            "Width": 80,
+            "Height": 80,
+            "Color": {
+              "Red": 33,
+              "Green": 184,
+              "Blue": 43
+            },
+            "CenterX": 40.0,
+            "CenterY": 40.0,
+            "Radius": 10.0,
+            "EndAngle": 360.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "Circle",
+            "Name": "Fault2_Indicator",
+            "X": 35,
+            "Y": 32,
+            "Width": 80,
+            "Height": 80,
+            "Color": {
+              "Red": 33,
+              "Green": 184,
+              "Blue": 43
+            },
+            "CenterX": 40.0,
+            "CenterY": 40.0,
+            "Radius": 10.0,
+            "EndAngle": 360.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "Circle",
+            "Name": "Fault3_Indicator",
+            "X": 82,
+            "Y": 33,
+            "Width": 80,
+            "Height": 80,
+            "Color": {
+              "Red": 33,
+              "Green": 184,
+              "Blue": 43
+            },
+            "CenterX": 40.0,
+            "CenterY": 40.0,
+            "Radius": 10.0,
+            "EndAngle": 360.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TItle",
+            "X": 82,
+            "Y": 11,
+            "Width": 56,
+            "Height": 36,
+            "TextId": "__SingleUse_YYCD",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "TempScreen"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "North",
+              "ActionComponent": "TempratureScreen"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "TempratureScreen",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "BG",
+            "Width": 480,
+            "Height": 272,
+            "Color": {
+              "Red": 247,
+              "Green": 255,
+              "Blue": 254
+            }
+          },
+          {
+            "Type": "Box",
+            "Name": "BG_1",
+            "Width": 480,
+            "Height": 272,
+            "Color": {
+              "Red": 247,
+              "Green": 255,
+              "Blue": 254
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "E14",
+            "X": 3,
+            "Y": 3,
+            "Width": 58,
+            "Height": 41,
+            "RelativeFilename": "Background.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "BackButton",
+            "X": -40,
+            "Y": -2,
+            "Width": 110,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_inactive.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_tiny_round_inactive.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_inactive.json"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "MOSFET1_Temp_Guage",
+            "X": 32,
+            "Y": 136,
+            "Width": 120,
+            "Height": 120,
+            "Preset": "alternate_theme\\presets\\gauges\\tiny\\dark.json",
+            "FileNameBackground": "__generated\\alternate_theme_images_widgets_gauge_tiny_backgrounds_dark.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -90.0,
+            "EndAngle": 90.0,
+            "RangeMax": 100.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "MOSFET2_Temp_Guage",
+            "X": 180,
+            "Y": 136,
+            "Width": 120,
+            "Height": 120,
+            "Preset": "alternate_theme\\presets\\gauges\\tiny\\dark.json",
+            "FileNameBackground": "__generated\\alternate_theme_images_widgets_gauge_tiny_backgrounds_dark.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -90.0,
+            "EndAngle": 90.0,
+            "RangeMax": 100.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "Gauge",
+            "Name": "MOSFET3_Temp_Guage",
+            "X": 327,
+            "Y": 136,
+            "Width": 120,
+            "Height": 120,
+            "Preset": "alternate_theme\\presets\\gauges\\tiny\\dark.json",
+            "FileNameBackground": "__generated\\alternate_theme_images_widgets_gauge_tiny_backgrounds_dark.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -90.0,
+            "EndAngle": 90.0,
+            "RangeMax": 100.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "FileNameArc": "__generated\\alternate_theme_images_widgets_gauge_tiny_fillers_swoop.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 12.0,
+            "ArcY": 12.0,
+            "ArcWidth": 95.0,
+            "ArcHeight": 71.0,
+            "ArcRadius": 50.0,
+            "ArcLineWidth": 49.0,
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MOSFET1_Temp_Value",
+            "X": 73,
+            "Y": 212,
+            "Width": 29,
+            "Height": 18,
+            "TextId": "__SingleUse_04K0",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MOSFET2_Temp_Value",
+            "X": 221,
+            "Y": 212,
+            "Width": 39,
+            "Height": 20,
+            "TextId": "__SingleUse_3F2C",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MOSFET3_Temp_Value",
+            "X": 368,
+            "Y": 212,
+            "Width": 39,
+            "Height": 20,
+            "TextId": "__SingleUse_M6ER",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MCU_Temp_Text",
+            "X": 221,
+            "Y": 9,
+            "Width": 104,
+            "Height": 54,
+            "TextId": "__SingleUse_CXW6",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MOSFET_Temp_Text",
+            "X": 78,
+            "Y": 101,
+            "Width": 222,
+            "Height": 36,
+            "TextId": "__SingleUse_KEZ1",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "Gauge",
+            "Name": "MCU_Temp_Guage",
+            "X": 327,
+            "Y": 9,
+            "Width": 120,
+            "Height": 120,
+            "Preset": "alternate_theme\\presets\\gauges\\tiny\\light.json",
+            "FileNameBackground": "__generated\\alternate_theme_images_widgets_gauge_tiny_backgrounds_light.png",
+            "RotationCenterX": 60.0,
+            "RotationCenterY": 60.0,
+            "StartAngle": -90.0,
+            "EndAngle": 90.0,
+            "RangeMax": 100.0,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__generated\\alternate_theme_images_widgets_gauge_tiny_needles_rough.png",
+            "NeedleRotationCenterX": 5.0,
+            "NeedleRotationCenterY": 33.0,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "ArcCapStyle": "Butt"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "MCU_Temp",
+            "X": 368,
+            "Y": 81,
+            "Width": 43,
+            "Height": 20,
+            "TextId": "__SingleUse_7WW3",
+            "TextRotation": "0",
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "BackButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "South",
+              "ActionComponent": "MotorControlScreen"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],
