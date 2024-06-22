@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2023 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -145,7 +145,7 @@ bool SoftwareMJPEGDecoder::decodeNextFrame(uint8_t* buffer, uint16_t buffer_widt
         currentMovieOffset += chunkSize;
         if (chunkSize == 0) // Empty frame - Skip
         {
-            currentMovieOffset += 8;
+          currentMovieOffset += 8;
         }
         currentMovieOffset = (currentMovieOffset + 1) & 0xFFFFFFFE; //pad to next word
 
@@ -570,10 +570,10 @@ void SoftwareMJPEGDecoder::getVideoInfo(touchgfx::VideoInformation* data)
 //#ifndef SIMULATOR
 //link libjpeg file operation to fileinput namespace
 extern "C" {
-    size_t jpeg_read_file(FILE* file, uint8_t* buf, uint32_t sizeofbuf)
-    {
-        assert(!"jpeg_read_file called with no implementation");
-        return 0;
-    }
+size_t jpeg_read_file(FILE* file, uint8_t* buf, uint32_t sizeofbuf)
+{
+    assert(!"jpeg_read_file called with no implementation");
+    return 0;
+}
 }
 //#endif

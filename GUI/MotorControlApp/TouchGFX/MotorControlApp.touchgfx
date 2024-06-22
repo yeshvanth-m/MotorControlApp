@@ -2,21 +2,27 @@
   "Application": {
     "Screens": [
       {
-        "Name": "Screen1",
+        "Name": "HomeScreen",
         "Components": [
           {
+            "Type": "Image",
+            "Name": "Background",
+            "Width": 480,
+            "Height": 272,
+            "RelativeFilename": "CoverPage.png"
+          },
+          {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1",
-            "X": 120,
-            "Y": 111,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "TextId": "__SingleUse_A0OA",
+            "Name": "Start",
+            "X": 31,
+            "Y": 153,
+            "Width": 138,
+            "Height": 36,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_36_small_round_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_36_small_round_action.png",
+            "TextId": "__SingleUse_ZJBP",
             "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
+              "Green": 123,
               "Blue": 255
             },
             "PressedColor": {
@@ -25,7 +31,37 @@
               "Blue": 255
             },
             "TextRotation": "0",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_36\\small_round_action.json"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "Start"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HomeScreen"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 480,
+            "Height": 272,
+            "Color": {
+              "Red": 107,
+              "Green": 191,
+              "Blue": 255
+            }
           }
         ],
         "Interactions": []
@@ -38,7 +74,7 @@
       "Height": 272
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "HomeScreen",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

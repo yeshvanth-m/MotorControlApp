@@ -6,8 +6,8 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_A0OA" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Hello World</Translation>
+      <Text Id="__SingleUse_ZJBP" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Start</Translation>
       </Text>
     </TextGroup>
   </Texts>

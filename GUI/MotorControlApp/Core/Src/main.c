@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stm32746g_discovery_qspi.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,6 +60,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+CAN_HandleTypeDef hcan1;
 
 CRC_HandleTypeDef hcrc;
 
@@ -99,7 +101,6 @@ static FMC_SDRAM_CommandTypeDef Command;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MPU_Initialize(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CRC_Init(void);
@@ -108,6 +109,7 @@ static void MX_FMC_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_QUADSPI_Init(void);
+static void MX_CAN1_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
@@ -118,7 +120,137 @@ extern void videoTaskFunc(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+CAN_TxHeaderTypeDef   TxHeader;
+uint8_t               TxData[8];
+uint32_t              TxMailbox;
+CAN_RxHeaderTypeDef   RxHeader;
+uint8_t               RxData[8];
+CAN_FilterTypeDef canfilterconfig;
 
+typedef struct
+{
+	uint16_t RPM_M1;
+	uint16_t RPM_M2;
+	uint16_t RPM_M3;
+	bool     ClrFault_M1;
+	bool     ClrFault_M2;
+	bool     ClrFault_M3;
+	bool     Ctrl_M1;
+	bool     Ctrl_M2;
+	bool     Ctrl_M3;
+} rotation_ctrl_t;
+
+typedef struct
+{
+	uint16_t RPM_M1;
+	uint16_t RPM_M2;
+	uint16_t RPM_M3;
+	bool     Stat_M1;
+	bool     Stat_M2;
+	bool     Stat_M3;
+	bool     Fault_M1;
+	bool     Fault_M2;
+	bool     Fault_M3;
+} rotation_stats_t;
+
+typedef struct
+{
+	uint16_t T_Chip;
+	uint16_t T_M1;
+	uint16_t T_M2;
+	uint16_t T_M3;
+} temp_stats_t;
+
+rotation_ctrl_t  rot_ctrl;
+rotation_stats_t rot_stats;
+temp_stats_t     temp_stats;
+
+osTimerId_t can_timer_id;
+
+static void CAN_Tx_Callback (void *argument)
+{
+	TxData[0] = (rot_ctrl.RPM_M1 >> 8);
+	TxData[1] = (rot_ctrl.RPM_M1 & 0xFF);
+	TxData[2] = (rot_ctrl.RPM_M2 >> 8);
+	TxData[3] = (rot_ctrl.RPM_M2 & 0xFF);
+	TxData[4] = (rot_ctrl.RPM_M3 >> 8);
+	TxData[5] = (rot_ctrl.RPM_M3 & 0xFF);
+	TxData[6] = ((rot_ctrl.ClrFault_M3 << 6) | (rot_ctrl.ClrFault_M1 << 5) | (rot_ctrl.ClrFault_M1 << 4)
+				 | (rot_ctrl.Ctrl_M3 << 2) | (rot_ctrl.Ctrl_M3 << 1) | rot_ctrl.Ctrl_M1);
+	TxData[7] = 0x22;
+	HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
+}
+
+// Rx message Handler
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+	if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	else
+	{
+		if (RxHeader.StdId == 2)
+		{
+			rot_stats.RPM_M1   = (RxData[0] << 8) | RxData[1];
+			rot_stats.RPM_M2   = (RxData[2] << 8) | RxData[3];
+			rot_stats.RPM_M3   = (RxData[4] << 8) | RxData[5];
+			rot_stats.Stat_M1  = ((RxData[6] & 0x10) >> 4) ;
+			rot_stats.Stat_M2  = ((RxData[6] & 0x20) >> 5);
+			rot_stats.Stat_M3  = ((RxData[6] & 0x40) >> 6);
+			rot_stats.Fault_M3 = RxData[6] & 0xF;
+			rot_stats.Fault_M2 = ((RxData[7] & 0xF0) >> 4);
+			rot_stats.Fault_M1 = (RxData[7] & 0x0F);
+		}
+		if (RxHeader.StdId == 3)
+		{
+			temp_stats.T_Chip = (RxData[0] << 8) | RxData[1];
+			temp_stats.T_M1   = (RxData[2] << 8) | RxData[3];
+			temp_stats.T_M2   = (RxData[4] << 8) | RxData[5];
+			temp_stats.T_M3   = (RxData[6] << 8) | RxData[7];
+		}
+	}
+}
+
+void setup_CAN (void)
+{
+	TxHeader.IDE = CAN_ID_STD;
+	TxHeader.RTR = CAN_RTR_DATA;
+	TxHeader.StdId = 0x001;
+	TxHeader.DLC = 8;
+
+	TxData[0] = 0x03;
+	TxData[1] = 0xE8;
+	TxData[2] = 0x03;
+	TxData[3] = 0xE8;
+	TxData[4] = 0x03;
+	TxData[5] = 0xE8;
+	TxData[6] = 0x77;
+	TxData[7] = 0x22;
+
+	// Start CAN
+	HAL_CAN_Start(&hcan1);
+
+	canfilterconfig.FilterActivation = CAN_FILTER_ENABLE;
+	canfilterconfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+	canfilterconfig.FilterIdHigh = 0;
+	canfilterconfig.FilterIdLow = 0;
+	canfilterconfig.FilterMaskIdHigh = 0;
+	canfilterconfig.FilterMaskIdLow = 0;
+	canfilterconfig.FilterMode = CAN_FILTERMODE_IDMASK;
+	canfilterconfig.FilterScale = CAN_FILTERSCALE_32BIT;
+	canfilterconfig.SlaveStartFilterBank = 14;  // how many filters to assign to the CAN1 (master can
+	canfilterconfig.FilterBank = 0;  // which filter bank to use from the assigned ones
+
+	// Configure the filter
+	HAL_CAN_ConfigFilter(&hcan1, &canfilterconfig);
+
+	// Enable CAN notification
+	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+	{
+	  Error_Handler();
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -131,6 +263,10 @@ int main(void)
 
   /* USER CODE END 1 */
 
+  /* MPU Configuration--------------------------------------------------------*/
+  MPU_Config();
+/* Enable the CPU Cache */
+
   /* Enable I-Cache---------------------------------------------------------*/
   SCB_EnableICache();
 
@@ -141,9 +277,6 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* MPU Configuration--------------------------------------------------------*/
-  MPU_Config();
 
   /* USER CODE BEGIN Init */
 
@@ -165,11 +298,12 @@ int main(void)
   MX_LTDC_Init();
   MX_QUADSPI_Init();
   MX_LIBJPEG_Init();
+  MX_CAN1_Init();
   MX_TouchGFX_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
-
+  setup_CAN();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -185,6 +319,12 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
+
+  // creates a periodic timer for Tx:
+  can_timer_id = osTimerNew(CAN_Tx_Callback, osTimerPeriodic, NULL, NULL);
+  // Timeout every 100ms
+  osTimerStart(can_timer_id, 100U);
+
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -274,6 +414,43 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CAN1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CAN1_Init(void)
+{
+
+  /* USER CODE BEGIN CAN1_Init 0 */
+
+  /* USER CODE END CAN1_Init 0 */
+
+  /* USER CODE BEGIN CAN1_Init 1 */
+
+  /* USER CODE END CAN1_Init 1 */
+  hcan1.Instance = CAN1;
+  hcan1.Init.Prescaler = 27;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
+  hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_2TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan1.Init.TimeTriggeredMode = DISABLE;
+  hcan1.Init.AutoBusOff = DISABLE;
+  hcan1.Init.AutoWakeUp = DISABLE;
+  hcan1.Init.AutoRetransmission = DISABLE;
+  hcan1.Init.ReceiveFifoLocked = DISABLE;
+  hcan1.Init.TransmitFifoPriority = DISABLE;
+  if (HAL_CAN_Init(&hcan1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CAN1_Init 2 */
+
+  /* USER CODE END CAN1_Init 2 */
+
 }
 
 /**
