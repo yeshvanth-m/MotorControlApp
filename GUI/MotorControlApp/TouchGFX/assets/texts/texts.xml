@@ -4,8 +4,19 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_THNU" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">25</Translation>
+      </Text>
+      <Text Id="__SingleUse_HJC5" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">25</Translation>
+      </Text>
+      <Text Id="__SingleUse_ABWZ" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">25</Translation>
+      </Text>
+      <Text Id="__SingleUse_K1JJ" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">25</Translation>
+      </Text>
       <Text Id="__SingleUse_KEZ1" Alignment="Left" TypographyId="Typography_00">
         <Translation Language="GB">MOSFET Driver Temperature&#10;</Translation>
       </Text>
@@ -15,17 +26,17 @@
       <Text Id="__SingleUse_YYCD" Alignment="Left" TypographyId="Typography_00">
         <Translation Language="GB"> Motor&#10;Control</Translation>
       </Text>
-      <Text Id="__SingleUse_7WW3" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">TMC</Translation>
+      <Text Id="__SingleUse_7WW3" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;°C</Translation>
       </Text>
-      <Text Id="__SingleUse_M6ER" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">T3C</Translation>
+      <Text Id="__SingleUse_M6ER" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;°C</Translation>
       </Text>
-      <Text Id="__SingleUse_3F2C" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">T2C</Translation>
+      <Text Id="__SingleUse_3F2C" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;°C</Translation>
       </Text>
       <Text Id="__SingleUse_04K0" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">T1C</Translation>
+        <Translation Language="GB">&lt;value&gt;°C</Translation>
       </Text>
       <Text Id="__SingleUse_MBKR" Alignment="Left" TypographyId="Typography_00">
         <Translation Language="GB">F3</Translation>
@@ -84,6 +95,6 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Typography_00" Font="verdana.ttf" Size="15" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_00" Font="verdana.ttf" Size="15" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

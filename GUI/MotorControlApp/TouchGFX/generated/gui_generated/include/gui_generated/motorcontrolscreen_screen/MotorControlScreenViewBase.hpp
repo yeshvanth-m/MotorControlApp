@@ -24,6 +24,22 @@ public:
     virtual ~MotorControlScreenViewBase();
     virtual void setupScreen();
 
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void ClearFault_1()
+    {
+        // Override and implement this function in MotorControlScreen
+    }
+    virtual void ClearFault_2()
+    {
+        // Override and implement this function in MotorControlScreen
+    }
+    virtual void ClearFault_3()
+    {
+        // Override and implement this function in MotorControlScreen
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());

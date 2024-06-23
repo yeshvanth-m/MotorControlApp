@@ -504,7 +504,7 @@
             "Name": "TItle",
             "X": 82,
             "Y": 11,
-            "Width": 56,
+            "Width": 54,
             "Height": 36,
             "TextId": "__SingleUse_YYCD",
             "TextRotation": "0",
@@ -523,6 +523,39 @@
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "North",
               "ActionComponent": "TempratureScreen"
+            }
+          },
+          {
+            "InteractionName": "ClearFault1_Clicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ClearFault_M1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "ClearFault_1"
+            }
+          },
+          {
+            "InteractionName": "ClearFault2_Clicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ClearFault_M2"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "ClearFault_2"
+            }
+          },
+          {
+            "InteractionName": "ClearFault3_Clicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "ClearFault_M3"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "ClearFault_3"
             }
           }
         ]
@@ -684,41 +717,53 @@
             "Type": "TextArea",
             "Name": "MOSFET1_Temp_Value",
             "X": 73,
-            "Y": 212,
-            "Width": 29,
-            "Height": 18,
+            "Y": 213,
+            "Width": 39,
+            "Height": 20,
             "TextId": "__SingleUse_04K0",
             "TextRotation": "0",
-            "AutoSize": true
+            "Wildcard1": {
+              "TextId": "__SingleUse_K1JJ",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           },
           {
             "Type": "TextArea",
             "Name": "MOSFET2_Temp_Value",
-            "X": 221,
+            "X": 218,
             "Y": 212,
-            "Width": 39,
-            "Height": 20,
+            "Width": 45,
+            "Height": 21,
             "TextId": "__SingleUse_3F2C",
             "TextRotation": "0",
-            "AutoSize": true
+            "Wildcard1": {
+              "TextId": "__SingleUse_ABWZ",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           },
           {
             "Type": "TextArea",
             "Name": "MOSFET3_Temp_Value",
-            "X": 368,
-            "Y": 212,
-            "Width": 39,
+            "X": 367,
+            "Y": 213,
+            "Width": 41,
             "Height": 20,
             "TextId": "__SingleUse_M6ER",
             "TextRotation": "0",
-            "AutoSize": true
+            "Wildcard1": {
+              "TextId": "__SingleUse_HJC5",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           },
           {
             "Type": "TextArea",
             "Name": "MCU_Temp_Text",
             "X": 221,
             "Y": 9,
-            "Width": 104,
+            "Width": 96,
             "Height": 54,
             "TextId": "__SingleUse_CXW6",
             "TextRotation": "0",
@@ -729,7 +774,7 @@
             "Name": "MOSFET_Temp_Text",
             "X": 78,
             "Y": 101,
-            "Width": 222,
+            "Width": 214,
             "Height": 36,
             "TextId": "__SingleUse_KEZ1",
             "TextRotation": "0",
@@ -766,13 +811,17 @@
           {
             "Type": "TextArea",
             "Name": "MCU_Temp",
-            "X": 368,
+            "X": 366,
             "Y": 81,
-            "Width": 43,
+            "Width": 42,
             "Height": 20,
             "TextId": "__SingleUse_7WW3",
             "TextRotation": "0",
-            "AutoSize": true
+            "Wildcard1": {
+              "TextId": "__SingleUse_THNU",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           }
         ],
         "Interactions": [

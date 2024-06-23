@@ -109,14 +109,17 @@ MotorControlScreenViewBase::MotorControlScreenViewBase() :
 
     ClearFault_M3.setXY(104, 95);
     ClearFault_M3.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_ICON_ROUND_MICRO_FILL_ACTION_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_ICON_ROUND_MICRO_FILL_PRESSED_ID));
+    ClearFault_M3.setAction(buttonCallback);
     add(ClearFault_M3);
 
     ClearFault_M1.setXY(11, 94);
     ClearFault_M1.setBitmaps(touchgfx::Bitmap(BITMAP_FAULT1_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_ICON_ROUND_MICRO_FILL_PRESSED_ID));
+    ClearFault_M1.setAction(buttonCallback);
     add(ClearFault_M1);
 
     ClearFault_M2.setXY(57, 95);
     ClearFault_M2.setBitmaps(touchgfx::Bitmap(BITMAP_FAULT_2_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_ICON_ROUND_MICRO_FILL_PRESSED_ID));
+    ClearFault_M2.setAction(buttonCallback);
     add(ClearFault_M2);
 
     E14.setXY(3, 3);
@@ -264,5 +267,26 @@ void MotorControlScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractB
         //When TempScreen clicked change screen to TempratureScreen
         //Go to TempratureScreen with screen transition towards North
         application().gotoTempratureScreenScreenSlideTransitionNorth();
+    }
+    if (&src == &ClearFault_M1)
+    {
+        //ClearFault1_Clicked
+        //When ClearFault_M1 clicked call virtual function
+        //Call ClearFault_1
+        ClearFault_1();
+    }
+    if (&src == &ClearFault_M2)
+    {
+        //ClearFault2_Clicked
+        //When ClearFault_M2 clicked call virtual function
+        //Call ClearFault_2
+        ClearFault_2();
+    }
+    if (&src == &ClearFault_M3)
+    {
+        //ClearFault3_Clicked
+        //When ClearFault_M3 clicked call virtual function
+        //Call ClearFault_3
+        ClearFault_3();
     }
 }

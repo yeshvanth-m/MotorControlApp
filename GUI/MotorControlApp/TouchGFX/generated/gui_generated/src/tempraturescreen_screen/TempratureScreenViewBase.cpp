@@ -63,21 +63,27 @@ TempratureScreenViewBase::TempratureScreenViewBase() :
     MOSFET3_Temp_Guage.setSteadyNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
     add(MOSFET3_Temp_Guage);
 
-    MOSFET1_Temp_Value.setXY(73, 212);
+    MOSFET1_Temp_Value.setPosition(73, 213, 39, 20);
     MOSFET1_Temp_Value.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     MOSFET1_Temp_Value.setLinespacing(0);
+    Unicode::snprintf(MOSFET1_Temp_ValueBuffer, MOSFET1_TEMP_VALUE_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_K1JJ).getText());
+    MOSFET1_Temp_Value.setWildcard(MOSFET1_Temp_ValueBuffer);
     MOSFET1_Temp_Value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_04K0));
     add(MOSFET1_Temp_Value);
 
-    MOSFET2_Temp_Value.setXY(221, 212);
+    MOSFET2_Temp_Value.setPosition(218, 212, 45, 21);
     MOSFET2_Temp_Value.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     MOSFET2_Temp_Value.setLinespacing(0);
+    Unicode::snprintf(MOSFET2_Temp_ValueBuffer, MOSFET2_TEMP_VALUE_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_ABWZ).getText());
+    MOSFET2_Temp_Value.setWildcard(MOSFET2_Temp_ValueBuffer);
     MOSFET2_Temp_Value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3F2C));
     add(MOSFET2_Temp_Value);
 
-    MOSFET3_Temp_Value.setXY(368, 212);
+    MOSFET3_Temp_Value.setPosition(367, 213, 41, 20);
     MOSFET3_Temp_Value.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     MOSFET3_Temp_Value.setLinespacing(0);
+    Unicode::snprintf(MOSFET3_Temp_ValueBuffer, MOSFET3_TEMP_VALUE_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_HJC5).getText());
+    MOSFET3_Temp_Value.setWildcard(MOSFET3_Temp_ValueBuffer);
     MOSFET3_Temp_Value.setTypedText(touchgfx::TypedText(T___SINGLEUSE_M6ER));
     add(MOSFET3_Temp_Value);
 
@@ -104,9 +110,11 @@ TempratureScreenViewBase::TempratureScreenViewBase() :
     MCU_Temp_Guage.setSteadyNeedleRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
     add(MCU_Temp_Guage);
 
-    MCU_Temp.setXY(368, 81);
+    MCU_Temp.setPosition(366, 81, 42, 20);
     MCU_Temp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     MCU_Temp.setLinespacing(0);
+    Unicode::snprintf(MCU_TempBuffer, MCU_TEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_THNU).getText());
+    MCU_Temp.setWildcard(MCU_TempBuffer);
     MCU_Temp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7WW3));
     add(MCU_Temp);
 }

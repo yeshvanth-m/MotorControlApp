@@ -11,6 +11,10 @@ public:
     virtual ~MotorControlScreenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+	virtual void handleTickEvent ();
+	virtual void ClearFault_1 ();
+	virtual void ClearFault_2 ();
+	virtual void ClearFault_3 ();
 protected:
     /*
 	 * Callback Declarations

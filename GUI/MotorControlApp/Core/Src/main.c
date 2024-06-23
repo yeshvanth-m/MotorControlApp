@@ -26,7 +26,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stm32746g_discovery_qspi.h>
-#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -127,43 +126,10 @@ CAN_RxHeaderTypeDef   RxHeader;
 uint8_t               RxData[8];
 CAN_FilterTypeDef canfilterconfig;
 
-typedef struct
-{
-	uint16_t RPM_M1;
-	uint16_t RPM_M2;
-	uint16_t RPM_M3;
-	bool     ClrFault_M1;
-	bool     ClrFault_M2;
-	bool     ClrFault_M3;
-	bool     Ctrl_M1;
-	bool     Ctrl_M2;
-	bool     Ctrl_M3;
-} rotation_ctrl_t;
-
-typedef struct
-{
-	uint16_t RPM_M1;
-	uint16_t RPM_M2;
-	uint16_t RPM_M3;
-	bool     Stat_M1;
-	bool     Stat_M2;
-	bool     Stat_M3;
-	bool     Fault_M1;
-	bool     Fault_M2;
-	bool     Fault_M3;
-} rotation_stats_t;
-
-typedef struct
-{
-	uint16_t T_Chip;
-	uint16_t T_M1;
-	uint16_t T_M2;
-	uint16_t T_M3;
-} temp_stats_t;
-
 rotation_ctrl_t  rot_ctrl;
 rotation_stats_t rot_stats;
 temp_stats_t     temp_stats;
+bool 			 updateRxStats;
 
 osTimerId_t can_timer_id;
 
@@ -175,10 +141,14 @@ static void CAN_Tx_Callback (void *argument)
 	TxData[3] = (rot_ctrl.RPM_M2 & 0xFF);
 	TxData[4] = (rot_ctrl.RPM_M3 >> 8);
 	TxData[5] = (rot_ctrl.RPM_M3 & 0xFF);
-	TxData[6] = ((rot_ctrl.ClrFault_M3 << 6) | (rot_ctrl.ClrFault_M1 << 5) | (rot_ctrl.ClrFault_M1 << 4)
-				 | (rot_ctrl.Ctrl_M3 << 2) | (rot_ctrl.Ctrl_M3 << 1) | rot_ctrl.Ctrl_M1);
+	TxData[6] = ((rot_ctrl.ClrFault_M3 << 6) | (rot_ctrl.ClrFault_M2 << 5) | (rot_ctrl.ClrFault_M1 << 4)
+				 | (rot_ctrl.Ctrl_M3 << 2) | (rot_ctrl.Ctrl_M2 << 1) | rot_ctrl.Ctrl_M1);
 	TxData[7] = 0x22;
 	HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
+
+	rot_ctrl.ClrFault_M1 = false;
+	rot_ctrl.ClrFault_M2 = false;
+	rot_ctrl.ClrFault_M3 = false;
 }
 
 // Rx message Handler
@@ -209,6 +179,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			temp_stats.T_M2   = (RxData[4] << 8) | RxData[5];
 			temp_stats.T_M3   = (RxData[6] << 8) | RxData[7];
 		}
+
+		updateRxStats = true;
 	}
 }
 

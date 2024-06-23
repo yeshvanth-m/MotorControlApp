@@ -32,12 +32,44 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef struct
+{
+	uint16_t RPM_M1;
+	uint16_t RPM_M2;
+	uint16_t RPM_M3;
+	bool     ClrFault_M1;
+	bool     ClrFault_M2;
+	bool     ClrFault_M3;
+	bool     Ctrl_M1;
+	bool     Ctrl_M2;
+	bool     Ctrl_M3;
+} rotation_ctrl_t;
 
+typedef struct
+{
+	uint16_t RPM_M1;
+	uint16_t RPM_M2;
+	uint16_t RPM_M3;
+	bool     Stat_M1;
+	bool     Stat_M2;
+	bool     Stat_M3;
+	bool     Fault_M1;
+	bool     Fault_M2;
+	bool     Fault_M3;
+} rotation_stats_t;
+
+typedef struct
+{
+	uint16_t T_Chip;
+	uint16_t T_M1;
+	uint16_t T_M2;
+	uint16_t T_M3;
+} temp_stats_t;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -52,7 +84,6 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

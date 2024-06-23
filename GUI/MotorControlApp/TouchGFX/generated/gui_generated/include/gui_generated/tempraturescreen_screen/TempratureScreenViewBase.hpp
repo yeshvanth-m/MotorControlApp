@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/Gauge.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 
 class TempratureScreenViewBase : public touchgfx::View<TempratureScreenPresenter>
@@ -36,13 +37,25 @@ protected:
     touchgfx::Gauge MOSFET1_Temp_Guage;
     touchgfx::Gauge MOSFET2_Temp_Guage;
     touchgfx::Gauge MOSFET3_Temp_Guage;
-    touchgfx::TextArea MOSFET1_Temp_Value;
-    touchgfx::TextArea MOSFET2_Temp_Value;
-    touchgfx::TextArea MOSFET3_Temp_Value;
+    touchgfx::TextAreaWithOneWildcard MOSFET1_Temp_Value;
+    touchgfx::TextAreaWithOneWildcard MOSFET2_Temp_Value;
+    touchgfx::TextAreaWithOneWildcard MOSFET3_Temp_Value;
     touchgfx::TextArea MCU_Temp_Text;
     touchgfx::TextArea MOSFET_Temp_Text;
     touchgfx::Gauge MCU_Temp_Guage;
-    touchgfx::TextArea MCU_Temp;
+    touchgfx::TextAreaWithOneWildcard MCU_Temp;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t MOSFET1_TEMP_VALUE_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar MOSFET1_Temp_ValueBuffer[MOSFET1_TEMP_VALUE_SIZE];
+    static const uint16_t MOSFET2_TEMP_VALUE_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar MOSFET2_Temp_ValueBuffer[MOSFET2_TEMP_VALUE_SIZE];
+    static const uint16_t MOSFET3_TEMP_VALUE_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar MOSFET3_Temp_ValueBuffer[MOSFET3_TEMP_VALUE_SIZE];
+    static const uint16_t MCU_TEMP_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar MCU_TempBuffer[MCU_TEMP_SIZE];
 
 private:
 
